@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Override base.view_partner_form to display Partner Marginality field -->
+<odoo>
+    <data>
+        <record id="inherited_view_partner_form" model="ir.ui.view">
+            <field name="name">inherited.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <!-- find the last attrs group inside partner info area and add custom fields after it -->
+                <xpath expr="//group/group[last()]" position="after">
+                    <group>
+                        <field name="marginality" options="{'type': 'number', 'step': 1}"/>
+                        <field name="my_field"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

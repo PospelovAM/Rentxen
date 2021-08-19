@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Override sale.view_order_form to display Partner Marginality field -->
+<odoo>
+    <data>
+        <record id="inherited_view_order_form" model="ir.ui.view">
+            <field name="name">inherited.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <!-- find group partner_details and add the field partner_marginality to the end of its field list -->
+                <xpath expr="//group[@name='partner_details']/field[last()]" position="after">
+                    <field name="partner_marginality" options='{"always_reload": True}'/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
