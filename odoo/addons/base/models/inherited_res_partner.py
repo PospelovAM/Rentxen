@@ -11,11 +11,13 @@ class InheritedPartner(models.Model):
 
     new fields:
         * marginality - increases the cost of products by the specified number of percent
+        * my_field - just a useless field
     """
 
     _inherit = 'res.partner'
 
     marginality = fields.Integer(string="Marginality", default=0)
+    my_field = fields.Char(string="My Field")
 
     @api.constrains('marginality')
     def _check_marginality(self):
